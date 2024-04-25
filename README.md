@@ -48,6 +48,9 @@ $ cypress open
 
 - **e2e/products/formEditProduct.cy.js**  
   Edit an existing product to product list in Pimcore
+- 
+- **e2e/products/formDeleteProduct.cy.js**  
+  Delete an existing product from product list in Pimcore
 
 ### Cypress POM product
 - **product.pom.cy.js**
