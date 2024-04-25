@@ -1,7 +1,8 @@
 class ProductPom
 {
     elements = {
-        productEditBtn : () => cy.get('button.product_items:first'),
+        productEditBtn : () => cy.get('button.product_update:first'),
+        productDeleteBtn : () => cy.get('button.product_delete:last'),
     };
 
     config = {
@@ -53,6 +54,30 @@ class ProductPom
             cy.get('.modal-footer button.btn-save').click().then(() => {
                 cy.get('#modal-body-msg').contains('Product updateAction successfully!');
                 this.checkProductList('eq(0)', product);
+            });
+        });
+    }
+
+    /**
+     * @returns void
+     */
+    deleteProduct ()
+    {
+        cy.log('# Run deleteProduct');
+        this.elements.productDeleteBtn().click().then(btn => {
+            const productId = btn.attr('data-product-id');
+            cy.get('#modalData').contains('Product deleted successfully.').then(() => {
+                let isDeleted = true;
+                cy.get('tr[data-row-id]').each(row => {
+                    if (row.attr('data-row-id') === productId) {
+                        isDeleted = false;
+                        return false;
+                    }
+                });
+                const log = (isDeleted)
+                    ? 'Product deleted successful and remove from product list'
+                    : 'Product deleted successful but failed to removed from product list';
+                cy.log(log);
             });
         });
     }
