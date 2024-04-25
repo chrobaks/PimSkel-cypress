@@ -32,7 +32,7 @@ $ cypress open
 ```
 
 
-- cypress.en.json (optional)
+- cypress.env.json (optional)
   Create a local cypress.en.json for your local settings if needed.
 ```
 {
