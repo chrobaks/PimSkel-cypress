@@ -1,4 +1,4 @@
-import ProductPom from "./product.pom.cy"
+import ProductPom from "../../pom/product.pom.cy"
 
 describe('Test Product form delete', () => {
     it('Delete product', () => {
