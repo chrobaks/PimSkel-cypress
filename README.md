@@ -17,10 +17,36 @@ $ npm install
 /YOUR_PROJECT_FOLDER/PimSkel-docker$ docker compose start
 ```
 
+### @Run cypress headless
+This run a docker cypress container for individual testing
+```bash
+# Run add new product test
+$ ./cypress-run.sh -p products -f add
+```
+
+### @Available test commands
+##### Run add new product test
+```bash
+$ ./cypress-run.sh -p products -f add
+```
+
+##### Run edit product test
+```bash
+$ ./cypress-run.sh -p products -f edit
+```
+
+##### Run delete product test
+```bash
+$ ./cypress-run.sh -p products -f delete
+```
+
+
 ### @Open cypress
+This open a cypress UI to run tests in a window
 ```bash
 $ cypress open
 ```
+
 ### @Config & @Env
 - cypress.config.js
   here find the default env config, if using a cypress.env.json will override existing keys.
