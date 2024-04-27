@@ -26,6 +26,9 @@ coverage
 
 # cypress
 cypress.env.json
+cypress/screenshots/
+cypress/videos/
+
 
 # nyc test coverage
 .nyc_output

@@ -26,4 +26,4 @@ if [[ -z $PATH_TO_TEST ]]; then
   exit 1
 fi
 
-docker run -it --network="host" -v "$PWD":/cypress/e2e -w /cypress/e2e cypress/included:12.8.1 run --browser electron --spec "$PATH_TO_TEST" --config video=false
+docker run -it --network="host" -v "$PWD":/cypress/e2e -w /cypress/e2e cypress/included:12.8.1 run --browser electron --spec "$PATH_TO_TEST" --config-file cypress.config.js
