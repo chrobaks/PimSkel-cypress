@@ -5,20 +5,13 @@ class ProductPom
         productDeleteBtn : () => cy.get('button.product_delete:last'),
     };
 
-    config = {
-        form : {
-            name: 'cypress',
-            description: 'cypress description',
-        },
-    };
-
     /**
      * @returns void
      */
     addProduct ()
     {
         cy.log('# Run addProduct');
-        const product = this.getProduct('add');
+        const product = this.getProduct();
 
         for (let key in product) {
             cy.get('#product_' + key).type(product[key]);
@@ -36,7 +29,7 @@ class ProductPom
     editProduct ()
     {
         cy.log('# Run editProduct and load form in modal view');
-        const product = this.getProduct('');
+        const product = this.getProduct();
         this.elements.productEditBtn().click().then(() => {
             cy.log('# Run updateProduct / update form in modal view');
             cy.get('form.modal-form').within(() => {
@@ -104,16 +97,12 @@ class ProductPom
      *
      * @returns {{name: string, description: string}}
      */
-    getProduct (action)
+    getProduct ()
     {
-        if (action === 'add') { // Get new product
-            const d = new Date(); // Need Date for a timestamp
-            return {
-                name: 'Product ' + d.getTime(),
-                description: 'Product description ' + d.getTime(),
-            }
-        } else { // Edit product with default values
-            return {...this.config.form};
+        const d = new Date();
+        return {
+            name: 'Product ' + d.getTime(),
+            description: 'Product description ' + d.getTime(),
         }
     }
 }
